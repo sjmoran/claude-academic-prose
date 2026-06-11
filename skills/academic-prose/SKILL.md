@@ -73,7 +73,10 @@ Write for a reviewer who reads the abstract, skims the intro for claims, jumps t
 4. Count "we do not claim": more than one instance → delete down to one.
 5. Search results sections for parentheses: each is deletable or evidence the sentence does two jobs.
 6. Confirm the headline number is the significance-tested one and every variant is in an ablation table.
-7. Grep the source for em-dashes ("---", and "--" outside number ranges); count and justify every remaining instance; check for banned constructions from §2.
+7. Banned-construction check — TWO stages, both mandatory:
+   a. Mechanical: grep for em-dashes ("---", and "--" outside number ranges), intensifier adverbs, and banned spellings; count and justify every remaining instance.
+   b. Semantic: greps CANNOT detect inversions, pivots, keynote/aphoristic sentences, marketing register, or anthropomorphic drama. These require reading every sentence, every \section/\subsection/\paragraph heading, every caption, and every figure label (including TikZ text nodes). Run this as a dedicated fresh-context audit — a subagent given the full source and the §2 ban list, instructed to return line-numbered violations with flat rewrites, explicitly told to sweep headings and captions — then apply the fixes. NEVER report this item as PASS on the strength of stage (a) alone.
+   Calibration note: a grep-only pass once reported PASS on a manuscript whose reader then found two violations within minutes of opening the PDF; the subsequent full semantic audit of the "clean" file surfaced 33 further must-fix items, six of them in headings and captions. Watch especially for: "what X buys" clefts, "the right tool was X; for Y it is Z" frames, "not X; it Y" pivots, sports/economic metaphors (wins, buys, clears, payoff, the load), one-line slide sentences used as paragraph closers, and fronted-participle openers ("Written this way, ...", "Recognised as X, ...").
 8. Spot-check spelling is consistent with the chosen variant throughout — no mixing.
 
 Report the outcome of this checklist to the user explicitly — pass/fail per item — before calling the draft finished.

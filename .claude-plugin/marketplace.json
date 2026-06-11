@@ -1,0 +1,21 @@
+{
+  "name": "claude-academic-prose",
+  "owner": {
+    "name": "Sean Moran",
+    "email": "sean.j.moran@gmail.com"
+  },
+  "metadata": {
+    "description": "Write academic paper prose that survives editorial triage — a plain-empirical voice profile, anti-screening rules against LLM-pattern constructions, and evaluability rules that make every claim checkable in thirty seconds",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "academic-prose",
+      "description": "Voice, anti-screening, and evaluability rules for academic paper prose, with a mandatory pre-submission self-check",
+      "source": "./",
+      "skills": [
+        "./skills/academic-prose"
+      ]
+    }
+  ]
+}

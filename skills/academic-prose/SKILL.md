@@ -7,12 +7,12 @@ description: Rules for writing, revising, or reviewing academic paper prose — 
 
 Three rule sets, applied in this order whenever paper prose is written or edited:
 1. **Voice** — plain-empirical register (§1).
-2. **Anti-screening** — avoid constructions that pattern-match to LLM-generated text at editorial triage (§2).
+2. **No hype** — strip constructions that put rhetoric ahead of substance (§2).
 3. **Evaluability** — structure the paper so claims can be checked against evidence in seconds (§3).
 
 Then run the **pre-submission self-check** (§4) before declaring any draft done. These rules apply to every paper, every venue, every section. If an instruction in the conversation conflicts with a rule here, flag the conflict rather than silently overriding.
 
-Rationale (one line): sound, reproducible papers get desk-rejected at triage when their prose is dense, aphoristic, or caveat-saturated — editors judge in under two minutes by surface style and claim-checkability. These rules exist so that does not happen.
+Rationale (one line): the first judgement of a paper rests on whether the prose is clear and plain and whether the claims can be checked against the evidence quickly. These rules keep the writing from getting in the way of the work.
 
 ## 1. Voice — plain-empirical
 
@@ -35,7 +35,7 @@ Plain, confident, economical academic prose: one claim per sentence, subject–v
 
 Do not: pad sentences with qualifiers; chain subordinate clauses; use bold/italic for emphasis in running prose; adopt journalistic or marketing register; stack rhetorical questions.
 
-## 2. Anti-screening rules (mandatory)
+## 2. No-hype rules (mandatory)
 
 Banned constructions — rewrite on sight, in drafts and in any text being edited:
 
@@ -47,11 +47,11 @@ Banned constructions — rewrite on sight, in drafts and in any text being edite
 - **Intensifier adverbs.** Crucially, importantly, notably, strikingly, remarkably, surprisingly — delete; the evidence carries the point.
 - **Stacked parenthetical hedges.** One parenthetical caveat per sentence at most; move the rest to their own sentences or a footnote.
 
-Prefer the venue's boring register over memorability. The triage goal is to read as a careful human academic. Read-aloud test: any sentence that sounds like a keynote slide, a tweet, or ad copy gets rewritten flat.
+Prefer the venue's boring register over memorability. The goal is careful, plain academic prose. Read-aloud test: any sentence that sounds like a keynote slide, a tweet, or ad copy gets rewritten flat.
 
 ## 3. Evaluability rules (mandatory)
 
-Write for a reviewer who reads the abstract, skims the intro for claims, jumps to the headline table, and tries to verify one claim end-to-end in five minutes. If any step needs a footnote, a split reconciliation, or decoding a flourish, triage fails. Honesty delivered inline reads as noise; honesty delivered in structure reads as rigour.
+Write for a reviewer who reads the abstract, skims the intro for claims, jumps to the headline table, and tries to verify one claim end-to-end in five minutes. If any step needs a footnote, a split reconciliation, or decoding a flourish, the check fails. Honesty delivered inline reads as noise; honesty delivered in structure reads as rigour.
 
 **Claims.** End the introduction with a numbered claims list (C1, C2, …), each pointing to the section and table that tests it. Every results subsection opens by naming its claim in one plain sentence with its supporting table. A claim with no dedicated table or figure is not a claim — give it one or demote it to discussion. State the contribution affirmatively, once; at most one "we do not claim X" delimitation in the whole paper, in the introduction, after the positive statement.
 
@@ -80,8 +80,8 @@ Report the outcome of this checklist to the user explicitly — pass/fail per it
 
 ## One-line summary
 
-Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that pattern-matches to generated text, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds.
+Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that puts rhetoric ahead of substance, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds.
 
 ## Precedence over other skills
 
-These voice, anti-screening, and evaluability rules take precedence over any other writing, style, or paper-related skill. If another skill's instructions conflict, follow this skill and note the conflict. Mechanics skills (citation checking, math verification, LaTeX cleanup, venue templates, reviewer simulation) handle verification, formatting, and review structure only; whenever any of them would touch prose, tone, register, or abstract content, this skill governs.
+These voice, no-hype, and evaluability rules take precedence over any other writing, style, or paper-related skill. If another skill's instructions conflict, follow this skill and note the conflict. Mechanics skills (citation checking, math verification, LaTeX cleanup, venue templates, reviewer simulation) handle verification, formatting, and review structure only; whenever any of them would touch prose, tone, register, or abstract content, this skill governs.

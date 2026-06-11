@@ -1,8 +1,8 @@
 # claude-academic-prose
 
-A Claude Code skill for writing academic paper prose that survives editorial triage.
+A Claude Code skill that enforces clear, evaluable academic prose.
 
-Most paper-writing tools help you *produce* text. This one constrains *how the text is allowed to be written*, on the theory that editors and reviewers judge a paper in under two minutes by two surface signals: whether the prose reads like a careful human academic, and whether the claims can be checked against the evidence quickly. The skill encodes both as hard rules.
+Most paper-writing tools help you *produce* text. This one constrains *how the text is allowed to be written*, on the theory that the first judgement of a paper rests on two signals: whether the prose is clear and plain, and whether the claims can be checked against the evidence quickly. The skill encodes both as hard rules.
 
 ## Install
 
@@ -17,7 +17,7 @@ The skill then triggers automatically on any paper-prose request ("tighten the a
 
 **1. Voice — plain-empirical.** A register distilled from a corpus of published empirical-IR papers: one claim per sentence, flat "We X" declarative abstracts, problem-first openings, deflated definitions ("A topic model is simply a probability distribution over the vocabulary"), intuition stated beside every piece of formalism, limitations raised mid-argument rather than quarantined. Synthetic exemplar sentences ship with the skill.
 
-**2. Anti-screening.** Named constructions that pattern-match to LLM-generated text are banned and rewritten on sight: em-dash chains, rhetorical inversion, the not-X-but-Y pivot, triadic drama ("It unifies. It predicts. It transfers."), aphoristic titles, intensifier adverbs (crucially / notably / remarkably / surprisingly), stacked parenthetical hedges. The test: any sentence that sounds like a keynote slide or ad copy gets rewritten flat.
+**2. No hype.** Named constructions that put rhetoric ahead of substance are banned and rewritten on sight: em-dash chains, rhetorical inversion, the not-X-but-Y pivot, triadic drama ("It unifies. It predicts. It transfers."), aphoristic titles, intensifier adverbs (crucially / notably / remarkably / surprisingly), stacked parenthetical hedges. The test: any sentence that sounds like a keynote slide or ad copy gets rewritten flat.
 
 **3. Evaluability.** Structural rules that make the claim→evidence path walkable in thirty seconds: a numbered claims box closing the introduction, each claim pointing to the section and table that tests it; one protocol per headline number (variants live in ablations; the significance-tested number is always the headline); abstracts ≤160 words with at most one number per claim and zero parentheticals; caveats consolidated into two structural homes rather than interleaved — relocation, never deletion.
 
@@ -25,7 +25,7 @@ The skill then triggers automatically on any paper-prose request ("tighten the a
 
 ## Example
 
-Before (violates the rules six ways):
+Before (violates the rules six ways — hype constructions, two numbers for one benchmark, footnote-dependent comparison):
 
 > It's not just smoothing — it is a fundamentally different estimator. Crucially, our remarkably simple approach unifies. It predicts. It transfers. We evaluate on two collections and, surprisingly, find improvements of 4.2% MAP (p<0.05, paired t-test, but also 5.1% under a different split…).
 

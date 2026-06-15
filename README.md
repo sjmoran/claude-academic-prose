@@ -19,9 +19,11 @@ The skill then triggers automatically on any paper-prose request ("tighten the a
 
 **2. No hype.** Named constructions that put rhetoric ahead of substance are banned and rewritten on sight: em-dash chains, rhetorical inversion, the not-X-but-Y pivot, triadic drama ("It unifies. It predicts. It transfers."), aphoristic titles, intensifier adverbs (crucially / notably / remarkably / surprisingly), stacked parenthetical hedges. The test: any sentence that sounds like a keynote slide or ad copy gets rewritten flat.
 
+**2b. No self-sabotage.** The mirror of no-hype: it forbids *underselling*. Every number, negative result, and limitation is kept — only the wording changes, so a true result is never framed to lose. Self-deprecating verbs for neutral findings ("fails", "worst", "merely", "degrades") become neutral ones ("lower", "does not improve", "matches", "within noise"); confirmed null predictions are stated as findings, not admissions; concessions to baselines are scoped to the regime where they hold; at most one "we do not claim X" survives in the whole paper; tested results lose their bare "exploratory"/"indicative" hedges; and the abstract, contribution sentence, and conclusion lead with the defensible win before the scoped caveat.
+
 **3. Evaluability.** Structural rules that make the claim→evidence path walkable in thirty seconds: a numbered claims box closing the introduction, each claim pointing to the section and table that tests it; one protocol per headline number (variants live in ablations; the significance-tested number is always the headline); abstracts ≤160 words with at most one number per claim and zero parentheticals; caveats consolidated into two structural homes rather than interleaved — relocation, never deletion.
 
-**4. Pre-submission self-check.** Eight items, reported pass/fail explicitly before any draft is called finished.
+**4. Pre-submission self-check.** Nine items, reported pass/fail explicitly before any draft is called finished.
 
 ## Example
 

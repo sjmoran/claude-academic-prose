@@ -5,10 +5,11 @@ description: Rules for writing, revising, or reviewing academic paper prose — 
 
 # Academic Prose
 
-Three rule sets, applied in this order whenever paper prose is written or edited:
+Four rule sets, applied in this order whenever paper prose is written or edited:
 1. **Voice** — plain-empirical register (§1).
 2. **No hype** — strip constructions that put rhetoric ahead of substance (§2).
-3. **Evaluability** — structure the paper so claims can be checked against evidence in seconds (§3).
+3. **No self-sabotage** — keep every fact and limitation, but never word the work down more than the evidence requires (§2b).
+4. **Evaluability** — structure the paper so claims can be checked against evidence in seconds (§3).
 
 Then run the **pre-submission self-check** (§4) before declaring any draft done. These rules apply to every paper, every venue, every section. If an instruction in the conversation conflicts with a rule here, flag the conflict rather than silently overriding.
 
@@ -50,6 +51,21 @@ Banned constructions — rewrite on sight, in drafts and in any text being edite
 
 Prefer the venue's boring register over memorability. The goal is careful, plain academic prose. Read-aloud test: any sentence that sounds like a keynote slide, a tweet, or ad copy gets rewritten flat.
 
+## 2b. No-self-sabotage rules (mandatory)
+
+No-hype (§2) forbids overselling; this rule forbids the opposite and equally common error, **underselling**. Both serve accuracy. Honesty is non-negotiable: keep every number, CI, p-value, negative result, and limitation — never delete a disclosure. The rule governs only *wording*: state each fact in the most neutral, least self-damaging phrasing the evidence allows, so a reviewer's first impression is not handed a quotable confession. The failure mode is a paper that is *true but framed to lose*.
+
+Rewrite on sight:
+
+- **Self-deprecating verbs for neutral findings.** A result that is lower is "lower" / "does not improve" / "matches" / "is within noise" — not "fails", "worst", "useless", "merely", "no better than", "degrades". Reserve failure language for actual failures. "R3 is worst" → "R3 is lowest"; "the compression fails" → "the compression does not recover the corpus's accuracy".
+- **Negative/null results are designed findings, not admissions.** If the paper predicted a null and confirmed it, state the confirmation ("the composition effect is within noise"), not a shortfall ("composition never helps"). A confirmed negative prediction is evidence *for* the framework, so frame it that way.
+- **Scope every concession to where it holds.** If a baseline leads only in one regime, bind the concession to that regime in the same clause ("in that regime, with ample per-class data, the head reaches higher accuracy"). Never a bare "the head is more accurate" that a reviewer can quote as a general admission.
+- **One delimitation, after the positive claim** (mirrors §3). At most one "we do not claim X" in the whole paper. Convert every other self-limiting "we do not / cannot / only / merely / do not surpass" into a neutral scope statement that keeps the fact: "we do not surpass end-to-end heads" → "end-to-end heads remain the accuracy ceiling, which a training-free method does not target".
+- **Do not hedge a tested result.** A number whose CI excludes zero is a result; do not also label it "exploratory" / "indicative" / "appears to". Keep the precise caveat once (e.g. "fragile to a multiple-comparison correction") and drop the bare adjective.
+- **Guard the high-read positions.** The abstract, the contribution sentence, and the conclusion form the first and last impression. Lead with the defensible win, then the scoped caveat; never open or close on a limitation stated more starkly than the evidence requires. Order matters: "exceeds RAM++ by 7 mAP and is far better calibrated; on MS-COCO a nearest-neighbour baseline reaches the same accuracy" beats "its 7 mAP margin is matched by a nearest-neighbour baseline".
+
+Read-aloud test (mirror of §2): any sentence a hostile reviewer could quote verbatim to justify rejection, that a neutral rephrasing would defuse **without changing a single fact**, gets rephrased. If the rephrasing would require softening a number or dropping a disclosure, stop — keep the honest version.
+
 ## 3. Evaluability rules (mandatory)
 
 Write for a reviewer who reads the abstract, skims the intro for claims, jumps to the headline table, and tries to verify one claim end-to-end in five minutes. If any step needs a footnote, a split reconciliation, or decoding a flourish, the check fails. Honesty delivered inline reads as noise; honesty delivered in structure reads as rigour.
@@ -79,12 +95,13 @@ Write for a reviewer who reads the abstract, skims the intro for claims, jumps t
    b. Semantic: greps CANNOT detect inversions, pivots, keynote/aphoristic sentences, marketing register, or anthropomorphic drama. These require reading every sentence, every \section/\subsection/\paragraph heading, every caption, and every figure label (including TikZ text nodes). Run this as a dedicated fresh-context audit — a subagent given the full source and the §2 ban list, instructed to return line-numbered violations with flat rewrites, explicitly told to sweep headings and captions — then apply the fixes. NEVER report this item as PASS on the strength of stage (a) alone.
    Calibration note: a grep-only pass once reported PASS on a manuscript whose reader then found two violations within minutes of opening the PDF; the subsequent full semantic audit of the "clean" file surfaced 33 further must-fix items, six of them in headings and captions. Watch especially for: "what X buys" clefts, "the right tool was X; for Y it is Z" frames, "not X; it Y" pivots, sports/economic metaphors (wins, buys, clears, payoff, the load), structural/engineering metaphors (load-bearing, linchpin, cornerstone, heavy lifting, backbone of the argument), one-line slide sentences used as paragraph closers, and fronted-participle openers ("Written this way, ...", "Recognised as X, ...").
 8. Spot-check spelling is consistent with the chosen variant throughout — no mixing.
+9. Self-sabotage sweep (§2b): scan for self-deprecating verbs on neutral findings ("fails", "worst", "useless", "merely", "degrades"), bare hedges on tested results ("exploratory", "indicative", "appears to"), and unscoped concessions to baselines; reframe each neutrally while keeping every number and disclosure. Re-read the abstract, contribution sentence, and conclusion specifically for limitations stated more starkly than the evidence requires. Best run as the same fresh-context audit as 7b. Confirm no fact, number, or disclosure was removed.
 
 Report the outcome of this checklist to the user explicitly — pass/fail per item — before calling the draft finished.
 
 ## One-line summary
 
-Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that puts rhetoric ahead of substance, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds.
+Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that puts rhetoric ahead of substance, word each result neither above nor below what the evidence shows, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds.
 
 ## Precedence over other skills
 

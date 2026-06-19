@@ -99,6 +99,24 @@ Write for a reviewer who reads the abstract, skims the intro for claims, jumps t
 
 Report the outcome of this checklist to the user explicitly — pass/fail per item — before calling the draft finished.
 
+## 5. Pre-submission experiment-code audit (papers with empirical claims)
+
+Before any empirical paper is called submission-ready, run an **adversarial bug audit of the experiment/evaluation code and its shared library** — in addition to the multi-reviewer simulation (`paper-reviewer-panel`), not instead of it. The two catch different failures: the reviewer panel reads the *manuscript* and judges claims and framing; it never sees the code. This audit reads the *code* that produced every headline number.
+
+Why it is mandatory and separate: **a result registry (numbers traced to the command that produced them) proves *reproducibility*, not *correctness*.** A bug in an eval script produces a wrong number, the registry faithfully records that wrong number, and a registry checker passes. "Every number traces to a command" is not "every number is correct."
+
+Run it as an adversarial fan-out (one skeptic per headline-claim script + the shared metric/estimator/data modules, each tasked to *find a result-invalidating bug*), then a second pass that tries to *refute* each finding (default to false-positive unless the code confirms it). Hunt specifically for the bug classes that survive a registry and a manuscript review but sink a claim:
+
+- **Test/corpus leakage** — a test/query item (or duplicate) sitting in the corpus/KV memory or in the co-occurrence/prior construction; the same split used to both select and evaluate.
+- **Test-set fitting** — temperature, threshold, kernel/β, top-k, or fusion weights chosen on test rather than validation; a "val" split that is actually test.
+- **Metric errors** — wrong averaging (micro vs per-class), off-by-one top-k, mAP on the wrong axis/sort, wrong P/R/F1 or ECE denominator, ties resolved so as to flatter.
+- **Baseline handicap** — the comparator given fewer dials, the wrong operating point, or a harder split than the proposed method.
+- **Aggregation** — seeds/bootstraps averaged or counted wrong; CI on the wrong resampling unit; permutation/sign-flip test mis-specified.
+- **Denominator/normalisation scope** — a correction summed over a set that includes the query itself or test items, or applied inconsistently between method and baseline.
+- **Silent filtering** — dropping hard examples, empty-label rows, or classes in a way that inflates the score.
+
+Deliverable: a severity-ranked report with `file:line` and the fix for each confirmed bug, an explicit list of uncertain items needing human eyes, and a stated coverage list (which scripts/claims were and were **not** audited). Report pass/fail to the user before calling the paper submission-ready; a clean audit is reported as clean, plainly.
+
 ## One-line summary
 
 Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that puts rhetoric ahead of substance, word each result neither above nor below what the evidence shows, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds.

@@ -5,11 +5,12 @@ description: Rules for writing, revising, or reviewing academic paper prose — 
 
 # Academic Prose
 
-Four rule sets, applied in this order whenever paper prose is written or edited:
+Five rule sets, applied in this order whenever paper prose is written or edited:
 1. **Voice** — plain-empirical register (§1).
 2. **No hype** — strip constructions that put rhetoric ahead of substance (§2).
 3. **No self-sabotage** — keep every fact and limitation, but never word the work down more than the evidence requires (§2b).
 4. **Evaluability** — structure the paper so claims can be checked against evidence in seconds (§3).
+5. **Readability** — make the takeaways obvious on a first read: few labels, findings first, one concrete case (§3b).
 
 Then run the **pre-submission self-check** (§4) before declaring any draft done. These rules apply to every paper, every venue, every section. If an instruction in the conversation conflicts with a rule here, flag the conflict rather than silently overriding.
 
@@ -86,6 +87,25 @@ Write for a reviewer who reads the abstract, skims the intro for claims, jumps t
 
 **Numbers are immutable and traceable.** Every reported number traces to one protocol (ideally one registry entry or script). Never report two versions of "the" result for a benchmark in the main text. If a structural edit seems to require touching a number, stop and re-derive which protocol it belongs to — and ask before changing anything.
 
+## 3b. Readability rules (mandatory)
+
+§3 makes the claims checkable. This section makes the paper readable on a first pass. A paper can obey every rule in §2–§3 and still read as dense, machine-generated prose. The usual causes are more coined labels than a reader can hold, findings buried under their qualifications, and the same abstract phrase repeated across sections. Reviewers report the result as "difficult to read" or "AI-generated".
+
+- **Name the takeaways first.** Before writing or revising, list the paper's three to five takeaways. Each is one plain sentence a reader could act on, for example "fix the thresholds before crediting learned directions". Write the abstract, the contributions list, the summary table and the conclusion from this list, so all four tell the same story. A takeaway that cannot be stated without a coined label is not yet a takeaway.
+- **Open with a concrete case.** The first page of the introduction carries one worked example in which the paper's idea settles a real question, such as "does B beat A because of X or because of Y?". An abstract statement of a framework does not replace the example. Reuse the example as a running case in later sections.
+- **Label budget.** Every coined label (C1, RQ2, H3, A₁, named axes, new abbreviations) costs the reader working memory. Use one numbering scheme for the paper's questions and claims, and map each label one-to-one onto a takeaway and its table or figure. Never run parallel or overlapping schemes, such as RQ1–RQ4 beside an RQ-X beside H1–H3. Write out any label used fewer than three times. Aim for at most about eight coined labels in the main text. Each symbol keeps one meaning throughout; when two subfields use the same symbol conventionally (M for a dimension and for a graph degree), rename one rather than footnote the clash.
+- **Finding first, then protocol.** Every results paragraph opens with its finding as a plain sentence with its table or figure. Protocol and caveats follow in a separate short paragraph or move to the limitations section (§3, caveats consolidated). If most sentences in a paragraph say what the result does *not* establish, the paragraph is defective. Summary tables carry a "finding" column stated as findings, not "permissible conclusions" or "effects depend on …".
+- **Answer an "overclaims" review with scope, not hedges.** When a reviewer says the claims are too strong, add one scope clause to the claim and put the full qualification in the limitations section. Do not hedge every sentence. Per-sentence caveats ("not X", "does not establish", "this is a convention", "not at equal Y") build a defensive wall that the next reviewer reads as unclear or machine-written. After every revision, check for this over-correction.
+- **No catalogue phrases.** A list of abstract nouns ("targets, controls, dependencies and diagnostic measurements") that recurs is a tell. Introduce the idea once, concretely, with an example, and afterwards refer to it by a short name.
+- **State the contribution once.** The introduction states the contribution. Later sections refer back to it; they do not re-justify it in a fresh paragraph.
+- **The main text reads alone.** A reader can understand every main-text finding without opening the supplement. Supplement pointers support a finding; they do not carry it. Aim for about one supplement pointer per finding; a paragraph citing three or more supplement tables needs restructuring.
+- **Put breakdowns in figures.** A breakdown (memory by component, error by stage) or a trend described across several sentences of numbers becomes a small figure or table.
+- **Readability edits are page-neutral.** Under a page cap, pay for each addition (example, figure, findings table) by cutting restated contributions, duplicated definitions, or protocol detail that can move to the supplement.
+
+**Measure, do not assert.** Before and after a readability revision, run a cold-read test. Give a fresh-context agent only the compiled PDF and ask for (a) the paper's key takeaways in its own words and (b) where it stalled and why. Compare (a) with the intended takeaway list. Also count coined labels, supplement pointers in the main text, parentheticals per paragraph and mean sentence length, and report the before and after values.
+
+Calibration note: a survey revised in answer to an "overclaims" review gained a caveat in nearly every results sentence. Reviewers had already rated the earlier version "difficult to read", and a later read of the revision found about eighteen coined labels in overlapping schemes, one symbol with three meanings, findings stated mid-paragraph behind their caveats, the contribution restated three times, and twenty-five supplement pointers in the main text.
+
 ## 4. Pre-submission self-check (run before declaring any draft done)
 
 1. Enumerate the claims and verify each against its evidence using only the claims box — each must be locatable and checkable in ≤30 seconds.
@@ -104,6 +124,7 @@ Write for a reviewer who reads the abstract, skims the intro for claims, jumps t
 11. Compiled-output sanity (open the built PDF, not just the source — a clean source can still render wrong). Two recurring faults:
     a. **Malformed heading numbers.** Scan headings for spurious deep numbers such as "14.0.0.1 Open problems." This is a numbered run-in `\paragraph` heading: the class is numbering to paragraph depth. IEEEtran journal/compsoc defaults to `\setcounter{secnumdepth}{4}`, which numbers `\paragraph`; when `\paragraph{}` is used for unnumbered run-in headings, set `\setcounter{secnumdepth}{3}`. (Detect by eye, or grep the PDF text for `\b[0-9]+\.[0-9]+\.[0-9]+\.[0-9]+ [A-Z]`.)
     b. **Floats overflowing or magnified.** Check every table/figure against the margins. A `\resizebox{\textwidth}{!}{...}` around a *tabular* renders at a huge font once the float becomes full-width (`table*`), because `\textwidth` is then the whole page, not the column — drop the resizebox so the tabular renders at its natural size. Likewise, in two-column classes `width=0.4\textwidth` subfloats and wide tabulars overflow a single column; promote genuinely wide floats to `figure*`/`table*` (identical in single-column classes, full-width in two-column). The fixes belong to `latex-cleanup`; this item only mandates that the *rendered* output be eyeballed, since these never show up in a source-only read.
+12. Readability sweep (§3b): a takeaway list exists, and the abstract, contributions, summary table and conclusion match it; the introduction carries one concrete case; coined labels are counted, there are no parallel label schemes, and no symbol carries two meanings; each results paragraph opens with its finding; no catalogue phrase recurs; the contribution is stated once; main-text findings read without the supplement. Run the cold-read test and report whether the fresh agent recovered the intended takeaways, with the before and after metrics.
 
 Report the outcome of this checklist to the user explicitly — pass/fail per item — before calling the draft finished.
 
@@ -127,8 +148,8 @@ Deliverable: a severity-ranked report with `file:line` and the fix for each conf
 
 ## One-line summary
 
-Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that puts rhetoric ahead of substance, word each result neither above nor below what the evidence shows, report findings without narrating the experimental journey or re-arguing why each experiment was run, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds.
+Write plainly and economically (one claim per sentence, intuition beside formalism), strip every construction that puts rhetoric ahead of substance, word each result neither above nor below what the evidence shows, report findings without narrating the experimental journey or re-arguing why each experiment was run, state each claim once and plainly, test it under one protocol in one table readable from its caption, keep every qualification one structured hop away — and make the claim→evidence path walkable in thirty seconds. Lead with a concrete case and a short list of takeaways, keep coined labels few, and put each finding before its caveats, so a first read recovers the takeaways without decoding.
 
 ## Precedence over other skills
 
-These voice, no-hype, and evaluability rules take precedence over any other writing, style, or paper-related skill. If another skill's instructions conflict, follow this skill and note the conflict. Mechanics skills (citation checking, math verification, LaTeX cleanup, venue templates, reviewer simulation) handle verification, formatting, and review structure only; whenever any of them would touch prose, tone, register, or abstract content, this skill governs.
+These voice, no-hype, evaluability, and readability rules take precedence over any other writing, style, or paper-related skill. If another skill's instructions conflict, follow this skill and note the conflict. Mechanics skills (citation checking, math verification, LaTeX cleanup, venue templates, reviewer simulation) handle verification, formatting, and review structure only; whenever any of them would touch prose, tone, register, or abstract content, this skill governs.

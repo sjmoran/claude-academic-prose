@@ -85,7 +85,7 @@ Write for a reviewer who reads the abstract, skims the intro for claims, jumps t
 
 **Register in results.** One claim per sentence; maximum one parenthetical per paragraph. "Removing the corpus costs 11 F1 (Table 7)" beats "The corpus, not the parameters, is the model." Thesis-style section titles are acceptable, but the first sentence beneath each states the claim plainly with its table. Table captions ≤3 sentences, descriptive only. Teaser figures carry mechanism, not marketing — no "beats X" callouts.
 
-**Numbers are immutable and traceable.** Every reported number traces to one protocol (ideally one registry entry or script). Never report two versions of "the" result for a benchmark in the main text. If a structural edit seems to require touching a number, stop and re-derive which protocol it belongs to — and ask before changing anything.
+**Numbers are immutable and traceable.** Every reported number traces to one protocol (ideally one registry entry or script). Never report two versions of "the" result for a benchmark in the main text. If a structural edit seems to require touching a number, stop and re-derive which protocol it belongs to — and ask before changing anything. Tables and captions produced by a script are edited in the script, not in the generated file. A hand edit to a generated fragment makes the reproducibility check fail, and the next regeneration silently undoes it. After any prose pass that touches captions or table rows, run the repository's verification gate (for example `make verify`) and confirm that it passes. Also check that every cited table or figure actually shows the number the sentence attributes to it.
 
 ## 3b. Readability rules (mandatory)
 
